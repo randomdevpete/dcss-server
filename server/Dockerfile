@@ -32,6 +32,11 @@ RUN pip3 install tornado jinja2 --break-system-packages \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 && ln -s /usr/bin/python3 /usr/bin/python
 
+# nodejs (required for webtiles)
+RUN apt-get install -y gnupg
+RUN curl -sL https://deb.nodesource.com/setup_22.x  | bash -
+RUN apt-get -y install nodejs
+
 RUN useradd -m crawl \
 && useradd -m crawl-dev \
 && usermod -G root -a crawl \
